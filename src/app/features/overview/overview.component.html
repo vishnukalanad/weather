@@ -1,0 +1,35 @@
+<div class="text-white p-4">
+  <p class="text-2xl">👋 Howdy!</p>
+  <p class="text-base font-light mt-3">Please provide access to you location or search for your location to get weather
+    information.</p>
+
+  <form [formGroup]="form">
+    <input type="text" class="w-full mt-3 bg-transparent border rounded-lg border-gray-800 p-2 font-normal"
+           placeholder="Search for location" formControlName="place">
+  </form>
+
+  @if (isPlacesLoading$ | async; as isPlacesLoading) {
+    @if (isPlacesLoading) {
+      <div class="w-6 h-6 mt-3">
+        <span class="loader"></span>
+      </div>
+    }
+  }
+
+  @if (places | async; as places) {
+    <div class="max-h-96 overflow-y-auto mt-1">
+      @for (place of places; track place.id) {
+        <div class="mt-2 bg-gray-800 rounded-lg p-2 w-full cursor-pointer" (click)="addLocationWeather(place)">
+          <p class="">
+            {{ place.name }}
+          </p>
+          <div class="flex gap-2">
+            <p class="text-sm text-gray-400">{{ place.country }}</p>
+            <p class="text-sm text-gray-400">(Timezone - {{ place.timezone }})</p>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+

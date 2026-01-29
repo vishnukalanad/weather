@@ -1,0 +1,16 @@
+@if (weatherState$ | async; as forecast) {
+  <div class="p-4">
+    <p class="text-base text-white font-medium">7 Days Forecast</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 box-border overflow-hidden mt-2">
+      @for (item of forecast.daily.time; track item; let i = $index) {
+        <div class="bg-white rounded-xl py-1 px-2">
+          <p class="text-sm">{{ item | date : 'EEE' }}</p>
+          <p class="text-lg font-semibold">
+            {{ forecast.daily.temperature_2m_max[i] }} <span class="text-sm">{{ forecast.daily_units.temperature_2m_max }}</span>
+          </p>
+        </div>
+      }
+    </div>
+  </div>
+}
+
