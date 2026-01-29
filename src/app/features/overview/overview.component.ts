@@ -53,11 +53,11 @@ export class OverviewComponent {
       this.loadWeatherForecasts(place.latitude.toString(), place.longitude.toString(), 7);
     } else if(window.navigator.geolocation) {
       console.log("load geolocation", window.navigator.geolocation)
-      window.navigator.geolocation.getCurrentPosition(position => {
-        console.log(position)
-        this.getWeather(position.coords.latitude.toString(), position.coords.longitude.toString());
-        this.loadWeatherForecasts(position.coords.latitude.toString(), position.coords.longitude.toString(), 7);
-      })
+      // window.navigator.geolocation.getCurrentPosition(position => {
+      //   console.log(position)
+      //   this.getWeather(position.coords.latitude.toString(), position.coords.longitude.toString());
+      //   this.loadWeatherForecasts(position.coords.latitude.toString(), position.coords.longitude.toString(), 7);
+      // })
     }
   }
 
